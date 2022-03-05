@@ -2,11 +2,11 @@ import {createSlice} from '@reduxjs/toolkit';
 import {register, login} from './actions';
 
 const initialState = {
-  isLogged: false,
+  isLogged: true,
   isLoading: false,
   registerSuccess: null,
   loginError: null,
-  isFirstTimeRunningApp: true,
+  isFirstTimeRunningApp: false,
   userName: '',
   userAddres: '',
   userimage: '',

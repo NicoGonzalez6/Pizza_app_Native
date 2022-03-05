@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import OnboardingScreen from './Modules/Onboardin';
 import LoginDashboard from './Modules/LoginDashboard';
 import {createStackNavigator} from '@react-navigation/stack';
+import Home from './Modules/Home';
 
 const Stack = createStackNavigator();
 
@@ -28,9 +29,9 @@ const AppContainer = () => {
     );
   }
   return (
-    <View>
-      <Text>app container</Text>
-    </View>
+    <Stack.Navigator screenOptions={({route}) => ({header: () => null})}>
+      <Stack.Screen name="Home" component={Home} />
+    </Stack.Navigator>
   );
 };
 
