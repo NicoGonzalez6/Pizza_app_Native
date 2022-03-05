@@ -23,11 +23,11 @@ const sessionReducer = createSlice({
     },
   },
   extraReducers: {
-    [register.pending]: (state, action) => {
+    [register.pending]: state => {
       state.registerSuccess = null;
       state.isLoading = true;
     },
-    [register.fulfilled]: (state, action) => {
+    [register.fulfilled]: state => {
       state.registerSuccess = true;
       state.isLoading = false;
     },
