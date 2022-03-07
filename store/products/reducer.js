@@ -1,11 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getCategories} from './actions';
+import {getCategories, getProducts} from './actions';
 
 const productReducer = createSlice({
   name: 'productReducer',
   initialState: {
     categories: {},
+    products: {},
     getCategoriesSuccess: null,
+    getProductsSuccess: null,
     isLoading: false,
   },
   extraReducers: {
@@ -21,6 +23,20 @@ const productReducer = createSlice({
     [getCategories.rejected]: (state, payload) => {
       state.isLoading = false;
       state.getCategoriesSuccess = false;
+    },
+
+    [getProducts.pending]: state => {
+      state.isLoading = true;
+      state.getProductsSuccess = null;
+    },
+    [getProducts.fulfilled]: (state, {payload}) => {
+      state.products = payload.products;
+      state.getProductsSuccess = true;
+      state.isLoading = false;
+    },
+    [getProducts.rejected]: (state, payload) => {
+      state.isLoading = false;
+      state.getProductsSuccess = false;
     },
   },
 });

@@ -14,3 +14,16 @@ export const getCategories = createAsyncThunk(
     }
   },
 );
+
+export const getProducts = createAsyncThunk(
+  'getProducts/productReducer',
+  async function (payload, {rejectWithValue}) {
+    try {
+      const data = await axios.get(`${URL}/api/v1/product/product`);
+
+      return data.data;
+    } catch (error) {
+      rejectWithValue(error.data);
+    }
+  },
+);

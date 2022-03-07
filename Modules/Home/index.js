@@ -32,6 +32,7 @@ const Index = () => {
         },
         tabBarLabelStyle: {
           fontFamily: GlobalStyles.fonts.mainFont,
+          color: GlobalStyles.colors.black,
         },
       })}>
       <Tab.Screen
