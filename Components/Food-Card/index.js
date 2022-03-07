@@ -12,9 +12,14 @@ import {
 } from './styles';
 import {getBucketUrlAsset} from '../../utils/services';
 
-const Item = ({item, index}) => {
+const Item = ({item, index, navigation}) => {
   return (
-    <Pressable onPress={() => console.log('pizza')}>
+    <Pressable
+      onPress={() =>
+        navigation.navigate('Details', {
+          item,
+        })
+      }>
       <ImageContainer>
         <Image
           resizeMode="contain"

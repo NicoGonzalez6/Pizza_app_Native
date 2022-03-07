@@ -3,15 +3,25 @@ import HomeScreen from '../../Screens/Home';
 import CartScreen from '../../Screens/Cart';
 import DeliveryScreen from '../../Screens/Delivery';
 import ProfileScreen from '../../Screens/Profile';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import ProductDetailScreen from '../../Screens/Food-Details';
+import {
+  createBottomTabNavigator,
+  BottomTabBar,
+} from '@react-navigation/bottom-tabs';
 import FontAwsome from 'react-native-vector-icons/FontAwesome';
 import GlobalStyles from '../../assets/styles';
+
 const Tab = createBottomTabNavigator();
 
 const Index = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
+        tabBarButton: ['Details'].includes(route.name)
+          ? () => {
+              return null;
+            }
+          : undefined,
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           color = focused
@@ -54,6 +64,11 @@ const Index = () => {
         options={{header: () => null}}
         name="Profile"
         component={ProfileScreen}
+      />
+      <Tab.Screen
+        options={{header: () => null}}
+        name="Details"
+        component={ProductDetailScreen}
       />
     </Tab.Navigator>
   );

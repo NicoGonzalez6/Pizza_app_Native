@@ -31,6 +31,7 @@ import {
   errorSubtitleRegister,
 } from '../../utils/constants';
 import LoadingModal from '../../Components/LoadingModal';
+import {setLoadingFalse, setLoadingTrue} from '../../store/session/reducer';
 
 const Register = ({navigation}) => {
   const Dispatch = useDispatch();
@@ -69,12 +70,14 @@ const Register = ({navigation}) => {
         console.log('User Cancel the operation');
       } else {
         const values = response.assets[0].base64;
-
+        Dispatch(setLoadingTrue());
         axios
           .post(`${URL}/api/v1/auth/profilePic-uploadApp`, {
             values,
           })
-          .then(response => setImage(response.data.image))
+          .then(response => {
+            return Dispatch(setLoadingFalse()), setImage(response.data.image);
+          })
           .catch(e => console.log(e));
       }
     });

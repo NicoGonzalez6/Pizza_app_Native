@@ -6,7 +6,7 @@ import {HomeMainContainer, MenuFilterItems, FoodItemsContainer} from './styles';
 import FoodTypeFilter from '../../Components/Filter-Item-Menu';
 import FoodCard from '../../Components/Food-Card';
 
-const MainHome = () => {
+const MainHome = ({navigation}) => {
   const {isLoading, categories, products} = useSelector(
     state => state.productReducer,
   );
@@ -68,7 +68,12 @@ const MainHome = () => {
             data={productFiltered}
             keyExtractor={item => item.idProduct}
             renderItem={({item, index}) => {
-              return <FoodCard item={item} index={index}></FoodCard>;
+              return (
+                <FoodCard
+                  item={item}
+                  index={index}
+                  navigation={navigation}></FoodCard>
+              );
             }}
           />
         </FoodItemsContainer>

@@ -21,6 +21,12 @@ const sessionReducer = createSlice({
     onboardingNext: state => {
       state.isFirstTimeRunningApp = false;
     },
+    setLoadingTrue: state => {
+      state.isLoading = true;
+    },
+    setLoadingFalse: state => {
+      state.isLoading = false;
+    },
   },
   extraReducers: {
     [register.pending]: state => {
@@ -58,6 +64,7 @@ const sessionReducer = createSlice({
   },
 });
 
-export const {onboardingNext} = sessionReducer.actions;
+export const {onboardingNext, setLoadingFalse, setLoadingTrue} =
+  sessionReducer.actions;
 
 export default sessionReducer.reducer;
