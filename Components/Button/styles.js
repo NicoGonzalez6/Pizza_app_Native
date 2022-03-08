@@ -16,4 +16,5 @@ export const Text = styled.Text`
   color: ${GlobalStyles.colors.white};
   font-family: ${GlobalStyles.fonts.mainFont};
   letter-spacing: 1px;
+  margin-top: 4px;
 `;

@@ -2,7 +2,8 @@ const colors = {
   mainColor: '#FA4A0E',
   black: '#000000',
   white: '#fff',
-  softGrey: '#b1b1b3',
+  softGrey: '#959595',
+  darkerGrey: '#D6D6D6',
   errorStrong: '#F90707',
 };
 
