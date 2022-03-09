@@ -9,6 +9,12 @@ const productReducer = createSlice({
     getCategoriesSuccess: null,
     getProductsSuccess: null,
     isLoading: false,
+    cart: [],
+  },
+  reducers: {
+    addToCart: (state, {payload}) => {
+      state.cart = [...state.cart, payload];
+    },
   },
   extraReducers: {
     [getCategories.pending]: state => {
@@ -42,3 +48,5 @@ const productReducer = createSlice({
 });
 
 export default productReducer.reducer;
+
+export const {addToCart} = productReducer.actions;

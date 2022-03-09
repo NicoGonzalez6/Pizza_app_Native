@@ -69,10 +69,7 @@ const MainHome = ({navigation}) => {
             keyExtractor={item => item.idProduct}
             renderItem={({item, index}) => {
               return (
-                <FoodCard
-                  item={item}
-                  index={index}
-                  navigation={navigation}></FoodCard>
+                <FoodCard item={item} index={index} navigation={navigation} />
               );
             }}
           />

@@ -17,28 +17,73 @@ import Button from '../../Components/Button';
 import {useState} from 'react';
 import TabSelect from '../../Components/TabSelect';
 import GlobalStyles from '../../assets/styles';
+import {addToCart} from '../../store/products/reducer';
+import {useDispatch, useSelector} from 'react-redux';
+import SuccessModal from '../../Components/SuccessModal';
+import ErrorModal from '../../Components/ErrorModal';
 
 const Index = ({route}) => {
   const {item} = route.params;
 
-  console.log(item);
+  const [crust, setCrust] = useState(1);
+  const [isVisible, setIsVisible] = useState(false);
+  const [errorIsVisible, setErrorIsVisible] = useState(false);
 
-  const [crust, setCrust] = useState(0);
+  const {cart} = useSelector(state => state.productReducer);
+
+  const Dispatch = useDispatch();
+
+  const cartIds = cart.map(product => product.idProduct);
 
   const data = [
     {
-      value: 0,
+      value: 1,
       label: 'Thin Crust',
     },
     {
-      value: 1,
+      value: 2,
       label: 'Traditional Crust',
     },
   ];
 
+  const cartObject = {
+    idProduct: item.idProduct,
+    productImage: item.productImage,
+    productName: item.productName,
+    productPrice: item.productPrice,
+    productType: item.productType,
+    categoryName: item.categoryName,
+    amount: 1,
+    pizzaCurst:
+      item.categoryName == 'Pizza'
+        ? data.filter(data => crust == data.value)[0].value
+        : null,
+  };
+
+  const cartHandler = () => {
+    if (cartIds.includes(cartObject.idProduct)) {
+      setErrorIsVisible(true);
+      return;
+    } else {
+      return Dispatch(addToCart(cartObject)), setIsVisible(true);
+    }
+  };
+
   return (
     <MainContainer>
       <ImageContainer>
+        <SuccessModal
+          modalVisible={isVisible}
+          setModalVisible={setIsVisible}
+          title={`Successfully added to cart`}
+          subtitle={`${item.productName} added to the cart`}
+        />
+        <ErrorModal
+          modalVisible={errorIsVisible}
+          setModalVisible={setErrorIsVisible}
+          title={`The product already exists`}
+          subtitle={`${item.productName} is already added to the cart`}
+        />
         <Image
           resizeMode="contain"
           source={{uri: getBucketUrlAsset(item.productImage)}}></Image>
@@ -61,13 +106,13 @@ const Index = ({route}) => {
                 <TabSelect
                   fontStyle={{
                     color:
-                      index == crust
+                      index + 1 == crust
                         ? GlobalStyles.colors.white
                         : GlobalStyles.colors.softGrey,
                   }}
                   styles={{
                     backgroundColor:
-                      index == crust
+                      index + 1 == crust
                         ? GlobalStyles.colors.mainColor
                         : GlobalStyles.colors.darkerGrey,
                   }}
@@ -81,7 +126,7 @@ const Index = ({route}) => {
         ) : null}
       </SelectContainer>
       <ButtonContainer>
-        <Button title="Add to Cart" />
+        <Button title="Add to Cart" onPress={cartHandler} />
       </ButtonContainer>
     </MainContainer>
   );
