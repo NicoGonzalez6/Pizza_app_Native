@@ -26,6 +26,7 @@ const Index = ({route}) => {
   const {item} = route.params;
 
   const [crust, setCrust] = useState(1);
+  const [portion, setPortion] = useState(1);
   const [isVisible, setIsVisible] = useState(false);
   const [errorIsVisible, setErrorIsVisible] = useState(false);
 
@@ -46,6 +47,17 @@ const Index = ({route}) => {
     },
   ];
 
+  const extra = [
+    {
+      value: 1,
+      label: 'normal',
+    },
+    {
+      value: 2,
+      label: 'extra',
+    },
+  ];
+
   const cartObject = {
     idProduct: item.idProduct,
     productImage: item.productImage,
@@ -54,6 +66,10 @@ const Index = ({route}) => {
     productType: item.productType,
     categoryName: item.categoryName,
     amount: 1,
+    extra:
+      item.categoryName == 'Snacks'
+        ? extra.filter(extra => portion == extra.value)[0].value
+        : null,
     pizzaCurst:
       item.categoryName == 'Pizza'
         ? data.filter(data => crust == data.value)[0].value
@@ -119,6 +135,34 @@ const Index = ({route}) => {
                   item={item}
                   index={index}
                   setCrust={setCrust}
+                />
+              );
+            }}
+          />
+        ) : null}
+        {item.categoryName == 'Snacks' ? (
+          <FlatList
+            contentContainerStyle={{width: '100%'}}
+            data={extra}
+            keyExtractor={item => item.value}
+            renderItem={({item, index}) => {
+              return (
+                <TabSelect
+                  fontStyle={{
+                    color:
+                      index + 1 == portion
+                        ? GlobalStyles.colors.white
+                        : GlobalStyles.colors.softGrey,
+                  }}
+                  styles={{
+                    backgroundColor:
+                      index + 1 == portion
+                        ? GlobalStyles.colors.mainColor
+                        : GlobalStyles.colors.darkerGrey,
+                  }}
+                  item={item}
+                  index={index}
+                  setCrust={setPortion}
                 />
               );
             }}

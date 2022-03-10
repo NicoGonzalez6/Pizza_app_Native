@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {getCategories, getProducts} from './actions';
+import {current} from '@reduxjs/toolkit';
 
 const productReducer = createSlice({
   name: 'productReducer',
@@ -14,6 +15,31 @@ const productReducer = createSlice({
   reducers: {
     addToCart: (state, {payload}) => {
       state.cart = [...state.cart, payload];
+    },
+    incrementAmount: (state, {payload}) => {
+      const id = payload[0].idProduct;
+
+      state.cart = current(state.cart).map(e => {
+        if (e.idProduct == id) {
+          return (e = {...payload[0]});
+        } else {
+          return e;
+        }
+      });
+    },
+    decrementAmount: (state, {payload}) => {
+      const id = payload[0].idProduct;
+
+      state.cart = current(state.cart).map(e => {
+        if (e.idProduct == id) {
+          return (e = {...payload[0]});
+        } else {
+          return e;
+        }
+      });
+    },
+    removeFromCart: (state, {payload}) => {
+      state.cart = payload;
     },
   },
   extraReducers: {
@@ -49,4 +75,5 @@ const productReducer = createSlice({
 
 export default productReducer.reducer;
 
-export const {addToCart} = productReducer.actions;
+export const {addToCart, removeFromCart, incrementAmount, decrementAmount} =
+  productReducer.actions;

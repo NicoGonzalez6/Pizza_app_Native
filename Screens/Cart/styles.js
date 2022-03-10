@@ -7,10 +7,9 @@ export const CartMainContainer = styled.View`
 `;
 
 export const TitleContainer = styled.View`
-  height: 15%;
+  height: 14%;
   align-items: center;
   justify-content: center;
-  padding: 20px 0;
 `;
 
 export const Title = styled.Text`
@@ -21,6 +20,11 @@ export const Title = styled.Text`
 `;
 
 export const FoodItemsContainer = styled.ScrollView`
-  height: 80%;
+  height: 76%;
   padding: 10px 0;
+`;
+
+export const CheckoutContainer = styled.View`
+  height: 10%;
+  justify-content: center;
 `;

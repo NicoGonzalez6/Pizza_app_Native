@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 
 export const loginInitialValues = {
-  email: '',
-  password: '',
+  email: 'nicolasgonzalez619@hotmail.com',
+  password: 'secret',
 };
 
 export const loginValidationSchema = yup.object().shape({

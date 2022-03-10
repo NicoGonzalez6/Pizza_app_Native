@@ -4,8 +4,10 @@ import {
   TitleContainer,
   Title,
   FoodItemsContainer,
+  CheckoutContainer,
 } from './styles';
 import {useDispatch, useSelector} from 'react-redux';
+import Button from '../../Components/Button';
 
 import FoodCardCart from '../../Components/Food-Card-Cart';
 import {FlatList} from 'react-native';
@@ -29,6 +31,9 @@ const Cart = ({navigation}) => {
           }}
         />
       </FoodItemsContainer>
+      <CheckoutContainer>
+        <Button title="Checkout"></Button>
+      </CheckoutContainer>
     </CartMainContainer>
   );
 };

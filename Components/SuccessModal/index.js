@@ -16,7 +16,7 @@ import SuccessImg from '../../assets/images/success.png';
 const Index = ({modalVisible, setModalVisible, title, subtitle}) => {
   return (
     <Modal
-      animationType="slide"
+      animationType="fade"
       transparent={true}
       visible={modalVisible}
       onRequestClose={() => {

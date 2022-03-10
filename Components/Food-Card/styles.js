@@ -54,7 +54,7 @@ export const PriceContainer = styled.View`
 
 export const PriceBox = styled.View`
   width: 40%;
-  height: 20px;
+  height: 25px;
   justify-content: center;
   align-items: center;
   background-color: ${GlobalStyles.colors.mainColor};
@@ -65,6 +65,6 @@ export const PriceBox = styled.View`
 export const Price = styled.Text`
   font-family: ${GlobalStyles.fonts.mainFont};
   color: ${GlobalStyles.colors.white};
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 14px;
+  margin-top: 2px;
 `;

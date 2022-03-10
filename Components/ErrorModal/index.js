@@ -16,7 +16,7 @@ import ErrorImg from '../../assets/images/error.png';
 const Index = ({modalVisible, setModalVisible, title, subtitle}) => {
   return (
     <Modal
-      animationType="slide"
+      animationType="fade"
       transparent={true}
       visible={modalVisible}
       onRequestClose={() => {
