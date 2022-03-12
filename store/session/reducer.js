@@ -12,6 +12,7 @@ const initialState = {
   userimage: '',
   userEmail: '',
   errorMsg: '',
+  idUser: '',
 };
 
 const sessionReducer = createSlice({
@@ -55,6 +56,7 @@ const sessionReducer = createSlice({
       state.lastName = action.payload.user.lastName;
       state.userimage = action.payload.user.profileImage;
       state.userEmail = action.payload.user.userEmail;
+      state.idUser = action.payload.user.idUser;
     },
     [login.rejected]: (state, action) => {
       state.isLoading = false;

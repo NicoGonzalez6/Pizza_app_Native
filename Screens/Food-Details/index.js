@@ -31,6 +31,7 @@ const Index = ({route}) => {
   const [errorIsVisible, setErrorIsVisible] = useState(false);
 
   const {cart} = useSelector(state => state.productReducer);
+  const {idUser} = useSelector(state => state.sessionReducer);
 
   const Dispatch = useDispatch();
 
@@ -65,12 +66,13 @@ const Index = ({route}) => {
     productPrice: item.productPrice,
     productType: item.productType,
     categoryName: item.categoryName,
+    idUser: idUser,
     amount: 1,
     extra:
       item.categoryName == 'Snacks'
         ? extra.filter(extra => portion == extra.value)[0].value
         : null,
-    pizzaCurst:
+    pizzaCrust:
       item.categoryName == 'Pizza'
         ? data.filter(data => crust == data.value)[0].value
         : null,

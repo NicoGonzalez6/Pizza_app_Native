@@ -11,8 +11,9 @@ export const MenuFilterItems = styled.View`
   height: 15%;
   align-items: center;
 `;
-
-export const FoodItemsContainer = styled.ScrollView`
+export const FlatListContainer = styled.FlatList`
   height: 80%;
   padding: 10px 0;
 `;
+
+export const FoodItemsContainer = styled.ScrollView``;

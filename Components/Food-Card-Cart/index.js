@@ -28,8 +28,6 @@ const Item = ({item, index, navigation}) => {
 
   const {cart} = useSelector(state => state.productReducer);
 
-  console.log(cart);
-
   const cartFilter = id => {
     return cart.filter(product => product.idProduct != id);
   };

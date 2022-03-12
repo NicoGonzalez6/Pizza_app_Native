@@ -19,10 +19,12 @@ export const Title = styled.Text`
   font-weight: 900;
 `;
 
-export const FoodItemsContainer = styled.ScrollView`
+export const FlatListContainer = styled.FlatList`
   height: 76%;
   padding: 10px 0;
 `;
+
+export const FoodItemsContainer = styled.ScrollView``;
 
 export const CheckoutContainer = styled.View`
   height: 10%;

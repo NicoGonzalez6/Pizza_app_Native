@@ -1,13 +1,9 @@
 import React from 'react';
 import HomeScreen from '../../Screens/Home';
 import CartScreen from '../../Screens/Cart';
-import DeliveryScreen from '../../Screens/Delivery';
 import ProfileScreen from '../../Screens/Profile';
 import ProductDetailScreen from '../../Screens/Food-Details';
-import {
-  createBottomTabNavigator,
-  BottomTabBar,
-} from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwsome from 'react-native-vector-icons/FontAwesome';
 import GlobalStyles from '../../assets/styles';
 
@@ -28,12 +24,10 @@ const Index = () => {
             ? GlobalStyles.colors.mainColor
             : GlobalStyles.colors.softGrey;
           size = focused ? 26 : 20;
-          if (route.name == 'Home') {
+          if (route.name == 'HomeScreen') {
             iconName = 'home';
           } else if (route.name == 'Cart') {
             iconName = 'cart-plus';
-          } else if (route.name == 'Delivery') {
-            iconName = 'truck';
           } else if (route.name == 'Profile') {
             iconName = 'user';
           }
@@ -47,18 +41,13 @@ const Index = () => {
       })}>
       <Tab.Screen
         options={{header: () => null}}
-        name="Home"
+        name="HomeScreen"
         component={HomeScreen}
       />
       <Tab.Screen
         options={{header: () => null}}
         name="Cart"
         component={CartScreen}
-      />
-      <Tab.Screen
-        options={{header: () => null}}
-        name="Delivery"
-        component={DeliveryScreen}
       />
       <Tab.Screen
         options={{header: () => null}}

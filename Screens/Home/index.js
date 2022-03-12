@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, VirtualizedList} from 'react-native';
 import {useSelector} from 'react-redux';
 import LoadingModal from '../../Components/LoadingModal';
-import {HomeMainContainer, MenuFilterItems, FoodItemsContainer} from './styles';
+import {
+  HomeMainContainer,
+  MenuFilterItems,
+  FoodItemsContainer,
+  FlatListContainer,
+} from './styles';
 import FoodTypeFilter from '../../Components/Filter-Item-Menu';
 import FoodCard from '../../Components/Food-Card';
 
@@ -32,6 +37,21 @@ const MainHome = ({navigation}) => {
       return e;
     }
   });
+
+  // Warning fix
+  function VirtualizedView(props) {
+    return (
+      <FlatListContainer
+        data={[]}
+        ListEmptyComponent={null}
+        keyExtractor={() => 'dummy'}
+        renderItem={null}
+        ListHeaderComponent={() => (
+          <React.Fragment>{props.children}</React.Fragment>
+        )}
+      />
+    );
+  }
 
   if (isLoading) {
     return (
@@ -63,17 +83,19 @@ const MainHome = ({navigation}) => {
             }}
           />
         </MenuFilterItems>
-        <FoodItemsContainer>
-          <FlatList
-            data={productFiltered}
-            keyExtractor={item => item.idProduct}
-            renderItem={({item, index}) => {
-              return (
-                <FoodCard item={item} index={index} navigation={navigation} />
-              );
-            }}
-          />
-        </FoodItemsContainer>
+        <VirtualizedView>
+          <FoodItemsContainer>
+            <FlatList
+              data={productFiltered}
+              keyExtractor={item => item.idProduct}
+              renderItem={({item, index}) => {
+                return (
+                  <FoodCard item={item} index={index} navigation={navigation} />
+                );
+              }}
+            />
+          </FoodItemsContainer>
+        </VirtualizedView>
       </HomeMainContainer>
     );
   }
