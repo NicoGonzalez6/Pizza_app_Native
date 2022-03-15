@@ -6,6 +6,8 @@ import {
   FoodItemsContainer,
   CheckoutContainer,
   FlatListContainer,
+  EmptyCart,
+  EmptyTitle,
 } from './styles';
 import {useSelector} from 'react-redux';
 import Button from '../../Components/Button';
@@ -36,6 +38,15 @@ const Cart = ({navigation}) => {
   const closeModal = () => {
     setIsVisible(false);
   };
+
+  if (cart.length == 0) {
+    return (
+      <EmptyCart>
+        <Title>Cart</Title>
+        <EmptyTitle>No product added to the cart yet</EmptyTitle>
+      </EmptyCart>
+    );
+  }
 
   return (
     <CartMainContainer>

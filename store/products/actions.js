@@ -36,7 +36,7 @@ export const createOrder = createAsyncThunk(
       const data = await axios.post(`${URL}/api/v1/order/generate-order`, {
         cart,
       });
-      return data;
+      return data.data.msg;
     } catch (error) {
       rejectWithValue(error.data);
     }

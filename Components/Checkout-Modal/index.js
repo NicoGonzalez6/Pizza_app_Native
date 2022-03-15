@@ -21,11 +21,16 @@ const CheckoutModal = ({isVisible, cart, closeModal}) => {
 
   let initial = 0;
 
-  const values = cart.map(
+  const values = cart?.map(
     product => Number(product.productPrice) * product.amount,
   );
 
   values.map(value => (initial += Number(value)));
+
+  const confirmOrderHandler = () => {
+    Dispatch(createOrder(cart));
+    closeModal();
+  };
 
   return (
     <Modal visible={isVisible} animationType="fade" transparent={true}>
@@ -50,11 +55,7 @@ const CheckoutModal = ({isVisible, cart, closeModal}) => {
               <TotalPrice>$ {initial.toString().slice(0, 5)}</TotalPrice>
             </TotalPriceContainer>
           </ModalCartContainer>
-          <Button
-            title="Confirm Order"
-            onPress={() => {
-              Dispatch(createOrder(cart));
-            }}></Button>
+          <Button title="Confirm Order" onPress={confirmOrderHandler}></Button>
         </ModalContent>
       </ModalContainer>
     </Modal>

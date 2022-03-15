@@ -76,9 +76,8 @@ const productReducer = createSlice({
       state.isLoading = true;
     },
     [createOrder.fulfilled]: (state, {payload}) => {
-      console.log(payload.data.msg);
       state.isLoading = false;
-      state.orderSuccess = payload.data.msg;
+      state.orderSuccess = payload;
     },
     [createOrder.rejected]: (state, payload) => {
       state.isLoading = false;

@@ -30,3 +30,17 @@ export const CheckoutContainer = styled.View`
   height: 10%;
   justify-content: center;
 `;
+
+export const EmptyCart = styled.View`
+  width: 90%;
+  margin: 0 auto;
+  align-items: center;
+  padding: 10px 0;
+`;
+
+export const EmptyTitle = styled.Text`
+  font-family: ${GlobalStyles.fonts.mainFont};
+  color: ${GlobalStyles.colors.softGrey};
+  font-size: 20px;
+  padding: 10px 0;
+`;
