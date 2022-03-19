@@ -16,7 +16,7 @@ import CloseImg from '../../assets/images/close.png';
 import {useDispatch} from 'react-redux';
 import {createOrder} from '../../store/products/actions';
 
-const CheckoutModal = ({isVisible, cart, closeModal}) => {
+const CheckoutModal = ({isVisible, cart, closeModal, setSuccessModal}) => {
   const Dispatch = useDispatch();
 
   let initial = 0;
@@ -30,6 +30,7 @@ const CheckoutModal = ({isVisible, cart, closeModal}) => {
   const confirmOrderHandler = () => {
     Dispatch(createOrder(cart));
     closeModal();
+    setSuccessModal(true);
   };
 
   return (

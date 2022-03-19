@@ -6,8 +6,8 @@ import {
   FoodItemsContainer,
   CheckoutContainer,
   FlatListContainer,
-  EmptyCart,
-  EmptyTitle,
+  EmptyView,
+  EmptyText,
 } from './styles';
 import {useSelector} from 'react-redux';
 import Button from '../../Components/Button';
@@ -15,11 +15,15 @@ import CheckoutModal from '../../Components/Checkout-Modal';
 import FoodCardCart from '../../Components/Food-Card-Cart';
 import {FlatList} from 'react-native';
 import LoadingModal from '../../Components/LoadingModal';
+import SuccessModal from '../../Components/SuccessModal';
 
 const Cart = ({navigation}) => {
-  const {cart, isLoading} = useSelector(state => state.productReducer);
+  const {cart, isLoading, orderSuccess} = useSelector(
+    state => state.productReducer,
+  );
 
   const [isVisible, setIsVisible] = useState(false);
+  const [successModal, setSuccessModal] = useState(false);
 
   // Warning Fix
   function VirtualizedView(props) {
@@ -41,19 +45,25 @@ const Cart = ({navigation}) => {
 
   if (cart.length == 0) {
     return (
-      <EmptyCart>
+      <EmptyView>
         <Title>Cart</Title>
-        <EmptyTitle>No product added to the cart yet</EmptyTitle>
-      </EmptyCart>
+        <EmptyText>No Products added to cart yet</EmptyText>
+        <SuccessModal
+          modalVisible={successModal}
+          title={orderSuccess}
+          setModalVisible={setSuccessModal}
+        />
+      </EmptyView>
     );
   }
-
   return (
     <CartMainContainer>
       <CheckoutModal
+        setSuccessModal={setSuccessModal}
         isVisible={isVisible}
         cart={cart}
         closeModal={closeModal}
+        navigation={navigation}
       />
       <TitleContainer>
         <Title>Cart</Title>

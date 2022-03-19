@@ -78,6 +78,7 @@ const productReducer = createSlice({
     [createOrder.fulfilled]: (state, {payload}) => {
       state.isLoading = false;
       state.orderSuccess = payload;
+      state.cart = [];
     },
     [createOrder.rejected]: (state, payload) => {
       state.isLoading = false;

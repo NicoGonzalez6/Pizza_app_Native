@@ -31,16 +31,16 @@ export const CheckoutContainer = styled.View`
   justify-content: center;
 `;
 
-export const EmptyCart = styled.View`
+export const EmptyView = styled.View`
   width: 90%;
   margin: 0 auto;
   align-items: center;
   padding: 10px 0;
 `;
 
-export const EmptyTitle = styled.Text`
+export const EmptyText = styled.Text`
   font-family: ${GlobalStyles.fonts.mainFont};
   color: ${GlobalStyles.colors.softGrey};
   font-size: 20px;
-  padding: 10px 0;
+  margin-top: 10px;
 `;

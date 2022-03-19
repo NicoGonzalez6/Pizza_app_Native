@@ -9,7 +9,7 @@ export const MainContainer = styled.View`
 `;
 
 export const ImageContainer = styled.View`
-  height: 45%;
+  height: 40%;
   width: 90%;
   margin: 0 auto;
   align-items: center;
