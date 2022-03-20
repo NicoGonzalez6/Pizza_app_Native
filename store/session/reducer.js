@@ -7,7 +7,8 @@ const initialState = {
   registerSuccess: null,
   loginError: null,
   isFirstTimeRunningApp: true,
-  userName: '',
+  name: '',
+  lastName: '',
   userAddres: '',
   userimage: '',
   userEmail: '',
@@ -27,6 +28,9 @@ const sessionReducer = createSlice({
     },
     setLoadingFalse: state => {
       state.isLoading = false;
+    },
+    logout: state => {
+      state.isLogged = false;
     },
   },
   extraReducers: {
@@ -66,7 +70,7 @@ const sessionReducer = createSlice({
   },
 });
 
-export const {onboardingNext, setLoadingFalse, setLoadingTrue} =
+export const {onboardingNext, setLoadingFalse, setLoadingTrue, logout} =
   sessionReducer.actions;
 
 export default sessionReducer.reducer;
