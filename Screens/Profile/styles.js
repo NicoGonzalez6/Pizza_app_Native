@@ -67,7 +67,6 @@ export const Logout = styled.Text`
 export const FlatListContainer = styled.FlatList`
   height: 80%;
   padding: 10px 0;
-  background-color: red;
 `;
 
 export const FoodHistoryContainer = styled.ScrollView``;

@@ -1,4 +1,5 @@
 import React from 'react';
+import {FlatList} from 'react-native-gesture-handler';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import {useDispatch, useSelector} from 'react-redux';
 import {logout} from '../../store/session/reducer';
@@ -17,6 +18,7 @@ import {
   FlatListContainer,
   FoodHistoryContainer,
 } from './styles';
+import OrderHistoryCard from '../../Components/Order-History';
 
 const Profile = () => {
   const {name, lastName, userEmail, userimage} = useSelector(
@@ -66,7 +68,14 @@ const Profile = () => {
         </ProfileInfoContainer>
       </ProfileContainer>
       <VirtualizedView>
-        <FoodHistoryContainer></FoodHistoryContainer>
+        <FoodHistoryContainer>
+          <FlatList
+            data={userOrders}
+            keyExtractor={item => item.idOrder}
+            renderItem={({item, index}) => {
+              return <OrderHistoryCard item={item} index={index} />;
+            }}></FlatList>
+        </FoodHistoryContainer>
       </VirtualizedView>
     </ProfileMainContainer>
   );
