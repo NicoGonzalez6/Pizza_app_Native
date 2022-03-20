@@ -21,7 +21,7 @@ export const Title = styled.Text`
 `;
 
 export const ProfileContainer = styled.View`
-  height: 30%;
+  height: 20%;
   flex-direction: row;
 `;
 
@@ -32,7 +32,7 @@ export const ImageContainer = styled.View`
 `;
 
 export const ProfileImage = styled.Image`
-  height:50%
+  height:70%
   border-radius:50px;
   width:80%
 `;

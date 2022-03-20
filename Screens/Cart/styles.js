@@ -43,5 +43,5 @@ export const EmptyText = styled.Text`
   font-family: ${GlobalStyles.fonts.mainFont};
   color: ${GlobalStyles.colors.softGrey};
   font-size: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
 `;
