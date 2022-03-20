@@ -17,6 +17,7 @@ import {
   Logout,
   FlatListContainer,
   FoodHistoryContainer,
+  EmptyText,
 } from './styles';
 import OrderHistoryCard from '../../Components/Order-History';
 
@@ -69,12 +70,18 @@ const Profile = () => {
       </ProfileContainer>
       <VirtualizedView>
         <FoodHistoryContainer>
-          <FlatList
-            data={userOrders}
-            keyExtractor={item => item.idOrder}
-            renderItem={({item, index}) => {
-              return <OrderHistoryCard item={item} index={index} />;
-            }}></FlatList>
+          {userOrders.length == 0 ? (
+            <EmptyText style={{textAlign: 'center'}}>
+              You dont have any orders yet
+            </EmptyText>
+          ) : (
+            <FlatList
+              data={userOrders}
+              keyExtractor={item => item.idOrder}
+              renderItem={({item, index}) => {
+                return <OrderHistoryCard item={item} index={index} />;
+              }}></FlatList>
+          )}
         </FoodHistoryContainer>
       </VirtualizedView>
     </ProfileMainContainer>

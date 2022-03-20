@@ -69,4 +69,13 @@ export const FlatListContainer = styled.FlatList`
   padding: 10px 0;
 `;
 
-export const FoodHistoryContainer = styled.ScrollView``;
+export const FoodHistoryContainer = styled.ScrollView`
+  padding: 10px 0;
+`;
+
+export const EmptyText = styled.Text`
+  font-family: ${GlobalStyles.fonts.mainFont};
+  color: ${GlobalStyles.colors.softGrey};
+  font-size: 20px;
+  margin-top: 10px;
+`;

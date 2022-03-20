@@ -22,7 +22,7 @@ const MainHome = ({navigation}) => {
 
   useEffect(() => {
     Dispatch(getUserOrders(idUser));
-  }, []);
+  }, [isLoading]);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
