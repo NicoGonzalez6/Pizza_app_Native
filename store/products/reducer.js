@@ -1,5 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getCategories, getProducts, createOrder} from './actions';
+import {
+  getCategories,
+  getProducts,
+  createOrder,
+  getUserOrders,
+} from './actions';
 import {current} from '@reduxjs/toolkit';
 
 const productReducer = createSlice({
@@ -12,6 +17,7 @@ const productReducer = createSlice({
     isLoading: false,
     cart: [],
     orderSuccess: '',
+    userOrders: [],
   },
   reducers: {
     addToCart: (state, {payload}) => {
@@ -57,6 +63,12 @@ const productReducer = createSlice({
       state.isLoading = false;
       state.getCategoriesSuccess = false;
     },
+
+    [getUserOrders.pending]: state => {},
+    [getUserOrders.fulfilled]: (state, {payload}) => {
+      state.userOrders = payload;
+    },
+    [getUserOrders.rejected]: (state, payload) => {},
 
     [getProducts.pending]: state => {
       state.isLoading = true;

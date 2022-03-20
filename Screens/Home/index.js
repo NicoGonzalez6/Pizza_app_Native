@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {FlatList, VirtualizedList} from 'react-native';
-import {useSelector} from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import {FlatList} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import LoadingModal from '../../Components/LoadingModal';
 import {
   HomeMainContainer,
@@ -10,11 +10,19 @@ import {
 } from './styles';
 import FoodTypeFilter from '../../Components/Filter-Item-Menu';
 import FoodCard from '../../Components/Food-Card';
+import {getUserOrders} from '../../store/products/actions';
 
 const MainHome = ({navigation}) => {
   const {isLoading, categories, products} = useSelector(
     state => state.productReducer,
   );
+  const {idUser} = useSelector(state => state.sessionReducer);
+
+  const Dispatch = useDispatch();
+
+  useEffect(() => {
+    Dispatch(getUserOrders(idUser));
+  }, []);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 

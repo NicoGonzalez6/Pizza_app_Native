@@ -41,3 +41,17 @@ export const createOrder = createAsyncThunk(
     }
   },
 );
+
+export const getUserOrders = createAsyncThunk(
+  'getUserOrders/productReducer',
+  async function (idUser, {rejectWithValue}) {
+    try {
+      const data = await axios.post(`${URL}/api/v1/order/get-order`, {
+        idUser,
+      });
+      return data.data.orders;
+    } catch (error) {
+      rejectWithValue(error.data);
+    }
+  },
+);

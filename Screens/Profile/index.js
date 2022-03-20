@@ -14,6 +14,8 @@ import {
   ProfileName,
   ProfileEmail,
   Logout,
+  FlatListContainer,
+  FoodHistoryContainer,
 } from './styles';
 
 const Profile = () => {
@@ -21,11 +23,28 @@ const Profile = () => {
     state => state.sessionReducer,
   );
 
+  const {userOrders} = useSelector(state => state.productReducer);
+
   const Dispatch = useDispatch();
 
   const logoutHandler = () => {
     Dispatch(logout());
   };
+
+  // Warning fix
+  function VirtualizedView(props) {
+    return (
+      <FlatListContainer
+        data={[]}
+        ListEmptyComponent={null}
+        keyExtractor={() => 'dummy'}
+        renderItem={null}
+        ListHeaderComponent={() => (
+          <React.Fragment>{props.children}</React.Fragment>
+        )}
+      />
+    );
+  }
 
   return (
     <ProfileMainContainer>
@@ -46,6 +65,9 @@ const Profile = () => {
           </Pressable>
         </ProfileInfoContainer>
       </ProfileContainer>
+      <VirtualizedView>
+        <FoodHistoryContainer></FoodHistoryContainer>
+      </VirtualizedView>
     </ProfileMainContainer>
   );
 };
