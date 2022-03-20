@@ -3,7 +3,7 @@ import GlobalStyles from '../../assets/styles';
 
 export const ProfileMainContainer = styled.View`
   width: 90%;
-  margin: 0 auto;
+  margin: 10px auto;
   flex: 1;
 `;
 

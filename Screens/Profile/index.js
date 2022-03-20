@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text, View} from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import {useDispatch, useSelector} from 'react-redux';
 import {logout} from '../../store/session/reducer';

@@ -4,6 +4,7 @@ import GlobalStyles from '../../assets/styles';
 export const CartMainContainer = styled.View`
   width: 90%;
   margin: 0 auto;
+  margin: 5px auto;
 `;
 
 export const TitleContainer = styled.View`
@@ -35,7 +36,7 @@ export const EmptyView = styled.View`
   width: 90%;
   margin: 0 auto;
   align-items: center;
-  padding: 10px 0;
+  margin: 20px auto;
 `;
 
 export const EmptyText = styled.Text`

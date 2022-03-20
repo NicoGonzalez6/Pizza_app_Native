@@ -30,11 +30,11 @@ const MainHome = ({navigation}) => {
 
   const filteredData = data?.map(e => e.categoryName);
 
-  const productFiltered = products?.filter(e => {
-    if (e.categoryName == filteredData) {
-      return e.categoryName == filteredData || e;
-    } else if (e.categoryName !== filteredData && filteredData == 'All') {
-      return e;
+  const productFiltered = products?.filter(product => {
+    if (product.categoryName == filteredData) {
+      return product.categoryName == filteredData || product;
+    } else if (product.categoryName !== filteredData && filteredData == 'All') {
+      return product;
     }
   });
 
